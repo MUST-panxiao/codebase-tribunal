@@ -483,7 +483,7 @@ When the user says "sync to other projects" or "these are shared across products
 2. **Create a shared fix plan** (e.g., `SHARED_FIX_PLAN.md`) that:
    - Lists each finding with a column per product showing ✅ (has issue) / ❌ (not affected) / ❓ (needs checking)
    - Groups into "shared fixes" (one fix, apply to all) vs "product-specific fixes"
-   - Includes a file-correspondence table (e.g., "snapshots.py:95 in Flu = snapshots.py:90 in Meningitis")
+   - Includes a file-correspondence table (e.g., "the snapshot module: line 95 in product 1 ≈ line 90 in product 2")
    - Recommends batch execution order
 3. **For copy-paste codebases** (common in product families): check that line numbers are close but may differ by a few lines due to product-specific additions. Always verify with `grep` before assuming.
 
@@ -493,7 +493,7 @@ When the user says "sync to other projects" or "these are shared across products
 # Check if a specific bug exists across all sibling projects
 for proj in Product D1 Product D2 Product D3; do
   echo "=== $proj ==="
-  grep -n "PATTERN" /path/to/$proj/backend/services/license.py
+  grep -n "PATTERN" /path/to/$proj/backend/<shared-module>
 done
 ```
 
